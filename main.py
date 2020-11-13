@@ -20,27 +20,29 @@ MainWindow.show()
 # Hook logic
 
 
+def upload_main_image():
+    #img = Image.open(ShowPath(ui))
+    #arr = np.asarray(img, dtype='uint8')
+
+    #k = np.array([[[0.2989, 0.587, 0.114]]])
+    #sums = np.round(arr/1.1111).astype(np.uint8)
+
+    #print(Image.fromarray(sums).save('1.jpg'), os.getcwd()+"1.jpg")
+    # ui.label.setPixmap(QtGui.QPixmap(os.getcwd()+"\\1.jpg"))
+
+    ui.mainPic.setPixmap(QtGui.QPixmap(ShowPath(ui)))
+
+
 def upload_image():
-    img = Image.open(ShowPath(ui))
-    arr = np.asarray(img, dtype='uint8')
-
-    k = np.array([[[0.2989, 0.587, 0.114]]])
-    sums = np.round(arr/1.1111).astype(np.uint8)
-
-    print(Image.fromarray(sums).save('1.jpg'), os.getcwd()+"1.jpg")
-    ui.label.setPixmap(QtGui.QPixmap(os.getcwd()+"\\1.jpg"))
+    ui.keyPic.setPixmap(QtGui.QPixmap(ShowPath(ui)))
 
 
 def ShowPath(self):
     return QFileDialog.getOpenFileName()[0]
 
 
-def show_second():
-    ui.label.setPixmap(QtGui.QPixmap("images/1.jpg"))
-
-
-ui.chooseButton.clicked.connect(upload_image)
-ui.secondButton.clicked.connect(show_second)
+ui.chooseButton.clicked.connect(upload_main_image)
+ui.chooseButton_2.clicked.connect(upload_image)
 
 
 # Run main loop
