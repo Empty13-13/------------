@@ -4,6 +4,7 @@ from PyQt5.QtWidgets import (QMainWindow, QTextEdit,
 import sys
 import os
 import functions
+import math
 import numpy as np
 from ui import Ui_MainWindow
 from PIL import Image
@@ -26,43 +27,49 @@ wbmArr = []
 
 # Основное изображение
 def upload_main_image():
+    global mainArr
     pathImg = ShowPath(ui)
     img = Image.open(pathImg)
-    mainArr = np.asarray(img, dtype='float16')
-    print(mainArr)
+    mainArr = np.asarray(img, dtype='uint8')
+    # print(mainArr)
 
     # k = np.array([[[0.2989, 0.587, 0.114]]])
-    # sums = np.round(arr/1.1111).astype(np.float16)
+    # sums = np.round(arr/1.1111).astype(np.uint8)
     # ui.label.setPixmap(QtGui.QPixmap(os.getcwd()+"\\1.jpg"))
 
     ui.mainPic.setPixmap(QtGui.QPixmap(pathImg))
 
 
 def startGenerateResult():
-    resultArr = np.floor(mainArr/1.11).astype(np.uint8)
-    print(resultArr)
+    global mainArr, keyArr, wbmArr
+    q = np.array([[[1.1, 1.1, 1.1]]])
+    functions.generateWithDWM(mainArr, wbmArr, keyArr, q)
 
 
 # Ключ
-def upload_key_image():
-    pathImg = ShowPath(ui)
+def upload_key_image(pathImg=""):
+    global keyArr
+    if not pathImg:
+        pathImg = ShowPath(ui)
     img = Image.open(pathImg)
-    keyArr = np.asarray(img, dtype='float16')
+    keyArr = np.asarray(img, dtype='uint8')
 
     ui.keyPic.setPixmap(QtGui.QPixmap(pathImg))
 
 
 def generateAndUpload():
-    Image.fromarray(np.array(functions.generate16x16())).save(
+    Image.fromarray(np.array(functions.generateKey())).save(
         'keyImg.jpg')
-    ui.keyPic.setPixmap(QtGui.QPixmap(os.getcwd()+"\\keyImg.jpg"))
+
+    upload_key_image(os.getcwd()+"\\keyImg.jpg")
 
 
 # ЦВЗ
 def upload_dwm_image():
+    global wbmArr
     pathImg = ShowPath(ui)
     img = Image.open(pathImg)
-    wbmArr = np.asarray(img, dtype='float16')
+    wbmArr = np.asarray(img, dtype='uint8')
 
     ui.dwmPic.setPixmap(QtGui.QPixmap(pathImg))
 

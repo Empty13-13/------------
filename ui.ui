@@ -318,7 +318,7 @@ border-radius: 40px;
      <bool>false</bool>
     </property>
     <property name="acceptDrops">
-     <bool>true</bool>
+     <bool>false</bool>
     </property>
     <property name="text">
      <string>Сгенерировать</string>
@@ -422,7 +422,7 @@ border-radius: 40px;
     <property name="title">
      <string>Изображение повернуто (по часовой стрелке)</string>
     </property>
-    <widget class="QRadioButton" name="radioButton">
+    <widget class="QRadioButton" name="radio0">
      <property name="geometry">
       <rect>
        <x>10</x>
@@ -438,7 +438,7 @@ border-radius: 40px;
       <bool>true</bool>
      </property>
     </widget>
-    <widget class="QRadioButton" name="radioButton_2">
+    <widget class="QRadioButton" name="radio90">
      <property name="geometry">
       <rect>
        <x>160</x>
@@ -451,7 +451,7 @@ border-radius: 40px;
       <string>90 Градусов</string>
      </property>
     </widget>
-    <widget class="QRadioButton" name="radioButton_3">
+    <widget class="QRadioButton" name="radio180">
      <property name="geometry">
       <rect>
        <x>10</x>
@@ -464,7 +464,7 @@ border-radius: 40px;
       <string>180 Градусов</string>
      </property>
     </widget>
-    <widget class="QRadioButton" name="radioButton_4">
+    <widget class="QRadioButton" name="radio270">
      <property name="geometry">
       <rect>
        <x>160</x>
@@ -483,7 +483,7 @@ border-radius: 40px;
      <rect>
       <x>410</x>
       <y>430</y>
-      <width>221</width>
+      <width>261</width>
       <height>41</height>
      </rect>
     </property>
@@ -498,9 +498,6 @@ border-radius: 40px;
     <property name="tabletTracking">
      <bool>false</bool>
     </property>
-    <property name="acceptDrops">
-     <bool>true</bool>
-    </property>
     <property name="styleSheet">
      <string notr="true">QPushButton{
 background-color: black;
@@ -513,7 +510,7 @@ color: white;
 }</string>
     </property>
     <property name="text">
-     <string>Сделать водяной знак</string>
+     <string>Поставить водяной знак</string>
     </property>
    </widget>
   </widget>
